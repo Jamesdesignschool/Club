@@ -1,0 +1,17 @@
+/* 공통 레이아웃 */
+
+#leftmenu {
+    z-index:1000;
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    position:fixed;
+    width:290px;
+    height:337px;
+
+
+
+    left:max(calc((100vw - 1280px)/2 + 1px), 1px);
+    top:187px;
+    overflow:visible;
+}
