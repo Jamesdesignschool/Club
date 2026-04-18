@@ -1,0 +1,17 @@
+
+
+
+
+/* 컨테이너 내부의 모든 iframe을 부모 크기에 즉시 맞춤 */
+.youtube iframe {
+    width: 100% !important;
+    height: 100% !important;
+    position: relative; /* 좌표 충돌 방지 */
+    display: block;
+}
+
+/* 컨테이너(.youtube) 자체 설정 */
+.youtube {
+    overflow: hidden; /* 영역 밖으로 나가는 것 방지 */
+    display: block;
+}
