@@ -234,15 +234,3 @@ updateTextMiddleOnScroll();
 
 
 
-//-- document.fonts.ready는 모든 웹 폰트가 로드되었을 때 실행됩니다.
-document.fonts.ready.then(function() {
-    
-    // "16px 'Malgun Gothic'" 폰트가 현재 브라우저에서 사용할 수 있는 상태인지 확인
-    // 시스템 폰트라도 브라우저가 이를 인식하고 준비하는 과정이 필요할 수 있습니다.
-    if (document.fonts.check("16px 'Malgun Gothic'")) {
-        alert("맑은 고딕 폰트가 로딩되었습니다!");
-    } else {
-        console.log("맑은 고딕 폰트를 찾을 수 없거나 로딩되지 않았습니다.");
-    }
-    
-});
