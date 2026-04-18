@@ -10,7 +10,7 @@
 
     // 모바일일 경우 iot_m.html로 이동
     if (isMobile()) {
-        window.location.href = "index_m.html";
+        window.location.href = "_index.html";
     }
 
 
