@@ -19,7 +19,7 @@
 // window.addEventListener("load", function () {                // <---- 똑같은건데 메뉴가 늦게뜸
 document.addEventListener("DOMContentLoaded", function () {     // <---- 이걸로 바꾸면 메뉴가 더 빠르게 뜸
     
-    const menuUrl = 'menu.html'; // 불러올 메뉴 파일명
+    const menuUrl = 'Menu.html'; // 불러올 메뉴 파일명
     const menuWidth = 1890;        // 메뉴 가로 너비               <<<----------------------- 밀려서 1890으로 ㅠ.ㅜ
     const menuHeight = 90;         // 메뉴 세로 높이
 
