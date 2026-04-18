@@ -16,7 +16,9 @@
 
 .m_text_head_4 span {
             
-        color: #5e5e5e;
+        color: #000000;
+        font-weight: 300;
+
         /* font-weight: bold; */
         /* letter-spacing: -0.07em; */
 

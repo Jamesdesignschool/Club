@@ -233,4 +233,15 @@ updateTextMiddleOnScroll();
 
 
 
+async function checkAndApplyFont() {
+    // 맑은 고딕이 시스템에 있는지 확인 (FontFaceSet API 이용)
+    const isMalgunAvailable = document.fonts.check("12px 'Malgun Gothic'");
 
+    if (!isMalgunAvailable) {
+        console.log("맑은 고딕이 없음 -> 산돌고딕으로 대체");
+        document.body.style.fontFamily = "'Apple SD Gothic Neo', sans-serif";
+    }
+}
+
+// 폰트 로딩 상태 확인 후 실행
+document.fonts.ready.then(checkAndApplyFont);

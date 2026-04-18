@@ -13,8 +13,9 @@
 }
 
 .pc_text_head_4 span {
-            
-        color: #535353;
+        color: #404040;
+        /* font-weight: 990; */
+
         /* font-weight: bold; */
         letter-spacing: -0.07em;
 
