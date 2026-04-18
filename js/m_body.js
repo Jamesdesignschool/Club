@@ -231,6 +231,9 @@ function updateTextMiddleOnScroll() {    // ← 함수명 변경
 window.addEventListener('scroll', updateTextMiddleOnScroll, { passive: true }); // ← 함수명 변경
 updateTextMiddleOnScroll();
 
+
+
+
 //-- document.fonts.ready는 모든 웹 폰트가 로드되었을 때 실행됩니다.
 document.fonts.ready.then(function() {
     
