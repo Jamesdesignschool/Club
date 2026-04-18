@@ -232,16 +232,27 @@ window.addEventListener('scroll', updateTextMiddleOnScroll, { passive: true }); 
 updateTextMiddleOnScroll();
 
 
+//--          맥 os 에서는 산돌고딕으로
 
-async function checkAndApplyFont() {
-    // 맑은 고딕이 시스템에 있는지 확인 (FontFaceSet API 이용)
+async function applyMobileFont() {
+    // 1. iOS/macOS 여부 확인
+    const isApple = /iPhone|iPad|iPod|Mac/.test(navigator.userAgent);
+    
+    // 2. 맑은 고딕 가용성 체크
+    // iOS는 맑은 고딕이 없으므로 항상 false가 나옵니다.
     const isMalgunAvailable = document.fonts.check("12px 'Malgun Gothic'");
 
-    if (!isMalgunAvailable) {
-        console.log("맑은 고딕이 없음 -> 산돌고딕으로 대체");
-        document.body.style.fontFamily = "'Apple SD Gothic Neo', sans-serif";
+    if (isApple || !isMalgunAvailable) {
+        console.log("Apple 기기 또는 맑은 고딕 부재: 산돌고딕 스택 적용");
+        
+        // 아이폰 크롬이 인식할 수 있는 모든 산돌고딕 명칭을 스택으로 넣습니다.
+        document.body.style.fontFamily = "-apple-system, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif";
     }
 }
 
-// 폰트 로딩 상태 확인 후 실행
-document.fonts.ready.then(checkAndApplyFont);
+// 폰트 준비가 끝난 후 + 즉시 실행 (안전장치)
+if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(applyMobileFont);
+} else {
+    window.onload = applyMobileFont;
+}
