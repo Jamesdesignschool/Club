@@ -1,1 +1,7 @@
 php_flag register_globals on
+
+RewriteEngine On
+# 파일 확장자가 없어도 .html을 붙여서 서버가 인식하도록 함
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^(.*)$ $1.html [NC,L]
