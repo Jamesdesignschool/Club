@@ -79,6 +79,12 @@ link2.href = '/css/m_fonts.css';
 document.head.appendChild(link2);
 
 
+//-- 타이틀 일관적으로 변경
+
+document.addEventListener("DOMContentLoaded", function() {
+    document.title = "클럽디자인";
+});
+
 
 //--                    /css/pc_youtube.css를 로드
 

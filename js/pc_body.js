@@ -14,6 +14,13 @@
     }
 
 
+//-- 타이틀 일관적으로 변경
+
+document.addEventListener("DOMContentLoaded", function() {
+    document.title = "클럽디자인";
+});
+
+
 //--                    PC 메뉴 탑에 불러옴
 
 // window.addEventListener("load", function () {                // <---- 똑같은건데 메뉴가 늦게뜸
