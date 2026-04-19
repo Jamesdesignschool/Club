@@ -79,33 +79,33 @@ link2.href = '/css/m_fonts.css';
 document.head.appendChild(link2);
 
 
-//--          유튜브 레이지 로드
+// //--          유튜브 레이지 로드
 
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    // .youtube 클래스 안에 있는 iframe들을 모두 찾습니다.
-    const lazyVideos = document.querySelectorAll(".youtube iframe");
 
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const iframe = entry.target;
-                // data-src에 숨겨놨던 주소를 src로 넣어줍니다.
-                if (iframe.dataset.src) {
-                    iframe.src = iframe.dataset.src;
-                }
-                // 로딩을 시작했으니 이 iframe은 더 이상 감시하지 않습니다.
-                observer.unobserve(iframe);
-            }
-        });
-    }, {
-        // 팁: 화면에 보이기 200px 전부터 미리 로딩을 시작하게 설정 (더 자연스러움)
-        rootMargin: "0px 0px 200px 0px" 
-    });
+// document.addEventListener("DOMContentLoaded", function() {
+//     // 1. 위에서 만든 class="lazy-youtube"를 가진 모든 요소를 찾습니다.
+//     const lazyVideos = document.querySelectorAll(".youtube");
 
-    lazyVideos.forEach(video => observer.observe(video));
-});
-</script>
+//     // 2. 화면에 보이는지 감시하는 '관찰자' 생성
+//     const observer = new IntersectionObserver((entries, observer) => {
+//         entries.forEach(entry => {
+//             if (entry.isIntersecting) { // 화면에 영상이 나타나면!
+//                 const iframe = entry.target;
+//                 // 숨겨둔 data-src를 진짜 src로 옮겨서 로딩 시작
+//                 iframe.src = iframe.dataset.src; 
+                
+//                 // 로딩이 시작됐으니 더 이상 감시할 필요 없음
+//                 observer.unobserve(iframe);
+//             }
+//         });
+//     });
+
+//     // 3. 모든 영상에 대해 감시 시작
+//     lazyVideos.forEach(video => observer.observe(video));
+// });
+
+
+
 
 //-- 타이틀 일관적으로 변경
 
