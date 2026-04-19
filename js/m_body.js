@@ -78,24 +78,34 @@ link2.rel = 'stylesheet';
 link2.href = '/css/m_fonts.css';
 document.head.appendChild(link2);
 
+
 //--          유튜브 레이지 로드
 
+<script>
 document.addEventListener("DOMContentLoaded", function() {
-    const lazyVideos = document.querySelectorAll("youtube");
+    // .youtube 클래스 안에 있는 iframe들을 모두 찾습니다.
+    const lazyVideos = document.querySelectorAll(".youtube iframe");
 
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const iframe = entry.target;
-                iframe.src = iframe.dataset.src; // 화면에 보일 때 src 주입
-                observer.unobserve(iframe);      // 로드 후 감시 중단
+                // data-src에 숨겨놨던 주소를 src로 넣어줍니다.
+                if (iframe.dataset.src) {
+                    iframe.src = iframe.dataset.src;
+                }
+                // 로딩을 시작했으니 이 iframe은 더 이상 감시하지 않습니다.
+                observer.unobserve(iframe);
             }
         });
+    }, {
+        // 팁: 화면에 보이기 200px 전부터 미리 로딩을 시작하게 설정 (더 자연스러움)
+        rootMargin: "0px 0px 200px 0px" 
     });
 
     lazyVideos.forEach(video => observer.observe(video));
 });
-
+</script>
 
 //-- 타이틀 일관적으로 변경
 
