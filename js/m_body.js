@@ -234,25 +234,54 @@ updateTextMiddleOnScroll();
 
 //--          맥 os 에서는 산돌고딕으로
 
-async function applyMobileFont() {
-    // 1. iOS/macOS 여부 확인
-    const isApple = /iPhone|iPad|iPod|Mac/.test(navigator.userAgent);
+// async function applyMobileFont() {
+//     // 1. iOS/macOS 여부 확인
+//     const isApple = /iPhone|iPad|iPod|Mac/.test(navigator.userAgent);
     
-    // 2. 맑은 고딕 가용성 체크
-    // iOS는 맑은 고딕이 없으므로 항상 false가 나옵니다.
-    const isMalgunAvailable = document.fonts.check("12px 'Malgun Gothic'");
+//     // 2. 맑은 고딕 가용성 체크
+//     // iOS는 맑은 고딕이 없으므로 항상 false가 나옵니다.
+//     const isMalgunAvailable = document.fonts.check("12px 'Malgun Gothic'");
 
-    if (isApple || !isMalgunAvailable) {
-        console.log("Apple 기기 또는 맑은 고딕 부재: 산돌고딕 스택 적용");
+//     if (isApple || !isMalgunAvailable) {
+//         console.log("Apple 기기 또는 맑은 고딕 부재: 산돌고딕 스택 적용");
         
-        // 아이폰 크롬이 인식할 수 있는 모든 산돌고딕 명칭을 스택으로 넣습니다.
-        document.body.style.fontFamily = "-apple-system, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif";
-    }
+//         // 아이폰 크롬이 인식할 수 있는 모든 산돌고딕 명칭을 스택으로 넣습니다.
+//         document.body.style.fontFamily = "-apple-system, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif";
+//     }
+// }
+
+// // 폰트 준비가 끝난 후 + 즉시 실행 (안전장치)
+// if (document.fonts && document.fonts.ready) {
+//     document.fonts.ready.then(applyMobileFont);
+// } else {
+//     window.onload = applyMobileFont;
+// }
+
+
+
+//--          맑은 고딕 폴더에서 열음
+async function loadCustomFonts() {
+  const fonts = [
+    { name: 'Malgun Gothic', url: 'url(/font/malgun.ttf)', weight: 'normal' },
+    { name: 'Malgun Gothic', url: 'url(/font/malgunbd.ttf)', weight: 'bold' },
+    { name: 'Malgun Gothic', url: 'url(/font/malgunsl.ttf)', weight: '300' } // Semilight
+    
+  ];
+
+  try {
+    const loadedFonts = await Promise.all(fonts.map(async (f) => {
+      const fontFace = new FontFace(f.name, f.url, { weight: f.weight });
+      const loadedFace = await fontFace.load(); // 폰트 파일 다운로드
+      document.fonts.add(loadedFace);           // 문서에 폰트 추가
+      return loadedFace;
+    }));
+
+    console.log("모든 폰트가 로드되었습니다.");
+    document.body.style.fontFamily = "'Malgun Gothic', sans-serif";
+  } catch (error) {
+    console.error("폰트 로드 중 오류 발생:", error);
+  }
 }
 
-// 폰트 준비가 끝난 후 + 즉시 실행 (안전장치)
-if (document.fonts && document.fonts.ready) {
-    document.fonts.ready.then(applyMobileFont);
-} else {
-    window.onload = applyMobileFont;
-}
+// 함수 실행
+loadCustomFonts();
