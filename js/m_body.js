@@ -78,6 +78,24 @@ link2.rel = 'stylesheet';
 link2.href = '/css/m_fonts.css';
 document.head.appendChild(link2);
 
+//--          유튜브 레이지 로드
+
+document.addEventListener("DOMContentLoaded", function() {
+    const lazyVideos = document.querySelectorAll("youtube");
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const iframe = entry.target;
+                iframe.src = iframe.dataset.src; // 화면에 보일 때 src 주입
+                observer.unobserve(iframe);      // 로드 후 감시 중단
+            }
+        });
+    });
+
+    lazyVideos.forEach(video => observer.observe(video));
+});
+
 
 //-- 타이틀 일관적으로 변경
 
