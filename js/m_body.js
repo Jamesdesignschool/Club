@@ -20,6 +20,8 @@ async function loadCustomFonts() {
     { name: 'Malgun Gothic', url: 'url(/font/malgun.ttf)', weight: 'normal' },
     { name: 'Malgun Gothic', url: 'url(/font/malgunbd.ttf)', weight: 'bold' },
     { name: 'Malgun Gothic', url: 'url(/font/malgunsl.ttf)', weight: '300' } // Semilight
+    { name: 'Malgun Gothic', url: 'url(/font/malgunsl.ttf)', weight: '400' } // Semilight
+
     
   ];
 
