@@ -17,32 +17,29 @@
 //--          맑은 고딕 폴더에서 열음
 async function loadCustomFonts() {
   const fonts = [
-    { name: 'Malgun Gothic', url: 'url(/font/malgun.ttf)', weight: 'normal' },
-    { name: 'Malgun Gothic', url: 'url(/font/malgunbd.ttf)', weight: 'bold' },
-    { name: 'Malgun Gothic', url: 'url(/font/malgunsl.ttf)', weight: '300' }, // Semilight
-    { name: 'Malgun Gothic', url: 'url(/font/malgunsl.ttf)', weight: '400' } // Semilight
-
-    
+    { name: 'Malgun Gothic', url: 'url(./font/malgun.ttf)', weight: 'normal' },
+    { name: 'Malgun Gothic', url: 'url(./font/malgunbd.ttf)', weight: 'bold' },
+    { name: 'Malgun Gothic', url: 'url(./font/malgunsl.ttf)', weight: 'lighter' } 
   ];
 
   try {
     const loadedFonts = await Promise.all(fonts.map(async (f) => {
       const fontFace = new FontFace(f.name, f.url, { weight: f.weight });
-      const loadedFace = await fontFace.load(); // 폰트 파일 다운로드
-      document.fonts.add(loadedFace);           // 문서에 폰트 추가
+      const loadedFace = await fontFace.load();
+      document.fonts.add(loadedFace);
       return loadedFace;
     }));
 
     console.log("모든 폰트가 로드되었습니다.");
-    document.body.style.fontFamily = "'Malgun Gothic', sans-serif";
+    
+    // test.html의 전체 컨테이너인 #test 또는 body에 폰트 적용
+    document.body.style.fontFamily = "'Malgun Gothic', 'Malgun Gothic', sans-serif";
   } catch (error) {
     console.error("폰트 로드 중 오류 발생:", error);
   }
 }
 
-// 함수 실행
 loadCustomFonts();
-
 
 
 //--                    PC 메뉴 탑에 불러옴
