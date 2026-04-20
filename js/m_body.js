@@ -281,7 +281,7 @@ function updateTextMiddleOnScroll() {    // ← 함수명 변경
       // 오브젝트가 너무 빨리 도착하는 이유는 애니메이션이 시작되고 끝나는 구간(트리거 범위)이 너무 좁고 위쪽에 몰려 있기 때문입니다.
       // 현재 코드의 windowHeight * 0.9에서 시작해 0.2 구간 동안만 움직이게 되어 있는데, 이 범위를 더 넓게(예: 0.5) 잡고,
       // **종료 지점을 더 위쪽(0.1)**으로 올려주면 페이지를 한참 더 올려야 애니메이션이 마감됩니다.
-    const moveX = 700 - 700 * progress;
+    const moveX = 900 - 900 * progress;
     ti.style.opacity   = progress;
     ti.style.transform = `translateX(${moveX}px)`;
   });

@@ -7,7 +7,7 @@
 
             // viewId → elementId 매핑
             const map = {
-                'index_m':        'index_m',
+                'index_m':      'index_m',
                 'vr_hud':       'vr_hud',
                 'r_d':          'r_d',
 				'adv':          'adv',             
