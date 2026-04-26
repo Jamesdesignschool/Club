@@ -73,7 +73,10 @@ document.addEventListener("DOMContentLoaded", function () {     // <---- 이걸�
     // }
 });
     
-    
+
+
+
+
 //--                    /css/pc_fonts.css 를 로드
 
 const link2 = document.createElement('link');
