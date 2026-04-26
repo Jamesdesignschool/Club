@@ -57,7 +57,7 @@ controls.target.set(0, 1, 0);
 // 7. GLTFLoader로 모델 로드
 const loader = new GLTFLoader();
 loader.load(
-    './3d/teapot.glb',
+    './3D/teapot.glb',
     (gltf) => {
         const model = gltf.scene;
 

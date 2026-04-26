@@ -191,18 +191,25 @@ model.traverse(function (node) {
         // -------------------------------------------------------
     },
     // --- [추가] 로딩 진행률 업데이트 ---
-    (xhr) => {
-        if (xhr.lengthComputable) {
-            const percent = Math.round((xhr.loaded / xhr.total) * 100);
-            barFill.style.width = percent + '%';
-            loadingText.textContent = `로딩 중... ${percent}%`;
-        }
-    },
-    // --- [추가] 로딩 실패 시 ---
-    (error) => {
-        console.error('모델 로드 실패:', error);
-        loadingText.textContent = '로드 실패';
+(xhr) => {
+    if (xhr.lengthComputable && xhr.total > 0) {
+        // Math.min을 사용하여 100%를 초과하지 않도록 강제 제한
+        let percent = Math.round((xhr.loaded / xhr.total) * 100);
+        if (percent > 100) percent = 100; 
+
+        barFill.style.width = percent + '%';
+        loadingText.textContent = `로딩 중... ${percent}%`;
+    } else {
+        // total 크기를 알 수 없는 경우 (서버 압축 등)
+        // 다운로드된 용량(MB)이라도 표시하여 멈춘 게 아님을 알림
+        const loadedMB = (xhr.loaded / (1024 * 1024)).toFixed(2);
+        loadingText.textContent = `다운로드 중... ${loadedMB} MB`;
+        
+        // 게이지가 계속 움직이는 애니메이션 효과를 주거나 
+        // 99%에서 멈춰있게 처리할 수 있습니다.
+        barFill.style.width = '99%'; 
     }
+}
 );
 
 
