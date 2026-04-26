@@ -241,3 +241,59 @@ window.addEventListener('resize', () => {
 });
 
 animate();
+
+
+
+
+//--                                                                    하단 Rotation 태그
+// (function () {
+//     const helpBox = document.createElement("div");
+//     helpBox.innerText = "LMB : Rotation / MMB : Zoom / RMB : Pan";
+
+//     helpBox.style.position = "fixed";
+//     helpBox.style.bottom = "10px";
+//     helpBox.style.left = "50%";
+//     helpBox.style.transform = "translateX(-50%)";
+
+//     helpBox.style.padding = "4px 20px";
+//     helpBox.style.background = "rgba(0, 0, 0, 0.5)";
+//     helpBox.style.color = "#fff";
+//     helpBox.style.fontSize = "14px";
+//     helpBox.style.fontFamily = "Arial, sans-serif";
+
+//     helpBox.style.borderRadius = "999px"; // 완전 둥글게
+//     helpBox.style.backdropFilter = "blur(6px)"; // 유리 느낌 (지원 브라우저에서만)
+    
+//     helpBox.style.zIndex = "9999";
+//     helpBox.style.pointerEvents = "none"; // 클릭 방해 안함
+
+//     document.body.appendChild(helpBox);
+// })();
+
+
+
+(function () {
+    const img = document.createElement("img");
+
+    // 이미지 경로
+    img.src = "./3D/mouse.png";
+
+    // 스타일
+    img.style.position = "fixed";
+    img.style.bottom = "10px";
+    img.style.left = "50%";
+    img.style.transform = "translateX(-50%)";
+
+    img.style.width = "140px"; // 필요하면 조절
+    img.style.height = "64px";
+
+    img.style.opacity = "1.6"; // 👈 여기서 투명도 조절 (0 ~ 1)
+
+    img.style.zIndex = "9999";
+    img.style.pointerEvents = "none"; // 클릭 방해 안함
+
+    // 부드러운 등장
+    img.style.transition = "opacity 0.3s ease";
+
+    document.body.appendChild(img);
+})();
